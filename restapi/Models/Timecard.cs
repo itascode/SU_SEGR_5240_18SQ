@@ -164,5 +164,30 @@ namespace restapi.Models
 
             return annotatedLine;
         }
+
+        public AnnotatedTimecardLine ReplaceLine(int index, TimecardLine timecardLine)
+        {
+
+            var annotatedLine = new AnnotatedTimecardLine(timecardLine);
+
+            Lines[index] = annotatedLine;
+
+            return annotatedLine;
+        }
+
+        public AnnotatedTimecardLine UpdateLine(int index, TimecardLine timecardLine)
+        {
+            var annotatedLine = Lines[index];
+
+            Console.WriteLine(JsonConvert.SerializeObject(timecardLine, Formatting.Indented));
+
+            //annotatedLine.Week = timecardLine.Week != null ? timecardLine.Week.Value : annotatedLine.Week;
+            //annotatedLine.Year = year != null ? year.Value : annotatedLine.Year;
+            //annotatedLine.Day = day != null ? day.Value : annotatedLine.Day;
+            //annotatedLine.Hours = hours != null ? hours.Value : annotatedLine.Hours;
+            //annotatedLine.Project = project != null ? project : annotatedLine.Project;
+
+            return annotatedLine;
+        }
     }
 }

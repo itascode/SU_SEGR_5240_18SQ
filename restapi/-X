@@ -1,0 +1,5 @@
+HTTP/1.1 200 OK
+Date: Tue, 10 Apr 2018 00:01:18 GMT
+Content-Type: application/com.my-company.my-product.root+json; charset=utf-8
+Transfer-Encoding: chunked
+

@@ -18,6 +18,7 @@ namespace restapi
         public static Timecard Find(string id)
         {
             Timecard timecard = null;
+            Console.WriteLine(JsonConvert.SerializeObject(Timecards, Formatting.Indented));
 
             if (Timecards.TryGetValue(id, out timecard) == true) 
             {

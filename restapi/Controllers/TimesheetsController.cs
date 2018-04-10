@@ -128,6 +128,59 @@ namespace restapi.Controllers
             }
         }
 
+        [HttpPost("{id}/lines/{lineIndex}")]
+        [Produces(ContentTypes.TimesheetLine)]
+        [ProducesResponseType(typeof(AnnotatedTimecardLine), 200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(typeof(InvalidStateError), 409)]
+        public IActionResult ReplaceLine(string id, int lineIndex, [FromBody] TimecardLine timecardLine)
+        {
+            Timecard timecard = Database.Find(id);
+
+            if (timecard != null)
+            {
+                if (timecard.Status != TimecardStatus.Draft)
+                {
+                    return StatusCode(409, new InvalidStateError() { });
+                }
+
+                var annotatedLine = timecard.ReplaceLine(lineIndex, timecardLine);
+
+                return Ok(annotatedLine);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpPatch("{id}/lines/{lineIndex}")]
+        [Produces(ContentTypes.TimesheetLine)]
+        [ProducesResponseType(typeof(AnnotatedTimecardLine), 200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(typeof(InvalidStateError), 409)]
+        public IActionResult UpdateLine(string id, int lineIndex, [FromBody] TimecardLine timecardLine)
+        {
+            Timecard timecard = Database.Find(id);
+
+            if (timecard != null)
+            {
+                if (timecard.Status != TimecardStatus.Draft)
+                {
+                    return StatusCode(409, new InvalidStateError() { });
+                }
+
+                var annotatedLine = timecard.UpdateLine(lineIndex, timecardLine);
+
+                return Ok(annotatedLine);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+
         [HttpGet("{id}/transitions")]
         [Produces(ContentTypes.Transitions)]
         [ProducesResponseType(typeof(IEnumerable<Transition>), 200)]
