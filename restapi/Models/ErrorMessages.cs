@@ -20,4 +20,10 @@ namespace restapi.Models
 
         public string Message { get => "No state transition of requested type present in timecard"; }
     }
+    public class DeletionStatusError
+    {
+        public int ErrorCode { get => 103; }
+
+        public string Message { get => "Timecard cannot be deleted due to status not being set to draft or cancelled"; }
+    }
 }

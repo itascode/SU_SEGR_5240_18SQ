@@ -27,7 +27,7 @@ namespace restapi.Controllers
         {
             Timecard timecard = Database.Find(id);
 
-            if (timecard != null) 
+            if (timecard != null)
             {
                 return Ok(timecard);
             }
@@ -51,6 +51,33 @@ namespace restapi.Controllers
             Database.Add(timecard);
 
             return timecard;
+        }
+
+        [HttpDelete("{id}")]
+        [Produces(ContentTypes.Timesheet)]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(typeof(DeletionStatusError), 405)]
+        public IActionResult Delete(string id)
+        {
+            Timecard timecard = Database.Find(id);
+
+            if (timecard != null)
+            {
+                if (timecard.Status == TimecardStatus.Draft || timecard.Status == TimecardStatus.Cancelled)
+                {
+                    Database.Delete(id);
+                    return Ok(); 
+                }
+                else
+                {
+                    return StatusCode(405, new DeletionStatusError() { }); 
+                }  
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         [HttpGet("{id}/lines")]
@@ -100,7 +127,7 @@ namespace restapi.Controllers
                 return NotFound();
             }
         }
-        
+
         [HttpGet("{id}/transitions")]
         [Produces(ContentTypes.Transitions)]
         [ProducesResponseType(typeof(IEnumerable<Transition>), 200)]
@@ -140,7 +167,7 @@ namespace restapi.Controllers
                 {
                     return StatusCode(409, new EmptyTimecardError() { });
                 }
-                
+
                 var transition = new Transition(submittal, TimecardStatus.Submitted);
                 timecard.Transitions.Add(transition);
                 return Ok(transition);
@@ -169,9 +196,9 @@ namespace restapi.Controllers
                                         .OrderByDescending(t => t.OccurredAt)
                                         .FirstOrDefault();
 
-                    return Ok(transition);                                        
+                    return Ok(transition);
                 }
-                else 
+                else
                 {
                     return StatusCode(409, new MissingTransitionError() { });
                 }
@@ -198,7 +225,7 @@ namespace restapi.Controllers
                 {
                     return StatusCode(409, new InvalidStateError() { });
                 }
-                
+
                 var transition = new Transition(cancellation, TimecardStatus.Cancelled);
                 timecard.Transitions.Add(transition);
                 return Ok(transition);
@@ -227,9 +254,9 @@ namespace restapi.Controllers
                                         .OrderByDescending(t => t.OccurredAt)
                                         .FirstOrDefault();
 
-                    return Ok(transition);                                        
+                    return Ok(transition);
                 }
-                else 
+                else
                 {
                     return StatusCode(409, new MissingTransitionError() { });
                 }
@@ -256,7 +283,7 @@ namespace restapi.Controllers
                 {
                     return StatusCode(409, new InvalidStateError() { });
                 }
-                
+
                 var transition = new Transition(rejection, TimecardStatus.Rejected);
                 timecard.Transitions.Add(transition);
                 return Ok(transition);
@@ -285,9 +312,9 @@ namespace restapi.Controllers
                                         .OrderByDescending(t => t.OccurredAt)
                                         .FirstOrDefault();
 
-                    return Ok(transition);                                        
+                    return Ok(transition);
                 }
-                else 
+                else
                 {
                     return StatusCode(409, new MissingTransitionError() { });
                 }
@@ -297,7 +324,7 @@ namespace restapi.Controllers
                 return NotFound();
             }
         }
-        
+
         [HttpPost("{id}/approval")]
         [Produces(ContentTypes.Transition)]
         [ProducesResponseType(typeof(Transition), 200)]
@@ -314,7 +341,7 @@ namespace restapi.Controllers
                 {
                     return StatusCode(409, new InvalidStateError() { });
                 }
-                
+
                 var transition = new Transition(approval, TimecardStatus.Approved);
                 timecard.Transitions.Add(transition);
                 return Ok(transition);
@@ -343,9 +370,9 @@ namespace restapi.Controllers
                                         .OrderByDescending(t => t.OccurredAt)
                                         .FirstOrDefault();
 
-                    return Ok(transition);                                        
+                    return Ok(transition);
                 }
-                else 
+                else
                 {
                     return StatusCode(409, new MissingTransitionError() { });
                 }
@@ -354,6 +381,10 @@ namespace restapi.Controllers
             {
                 return NotFound();
             }
-        }        
+        }
     }
 }
+
+
+
+
