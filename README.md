@@ -39,7 +39,7 @@ ISBN-10: 0201362988<br/>
 
 * 04/03 Introduction
 * 04/10 Design patterns
-* 04/17 Stephen: Open Topic
+* 04/17 Stephen Riley: Pattern Oriented Software Architecture
 * 04/24 Distributed computing and API design
 * 05/01 Agile software architecture
 * 05/08 Mid-term, Pragmatic programming
