@@ -39,14 +39,15 @@ ISBN-10: 0201362988<br/>
 
 * 04/03 Introduction
 * 04/10 Design patterns
-* 04/17 Stephen: Open Topic
-* 04/24 Distributed computing and API design
+* 04/17 Stephen Riley: Pattern Oriented Software Architecture
+* 04/24 What is architecture
 * 05/01 Agile software architecture
 * 05/08 Mid-term, Pragmatic programming
-* 05/15 TNG breakdown (design studio class)
-* 05/22 What is architecture
-* 05/29 Anti-patterns and Topics in Software Architecture
-* 06/05 Design papers due
+* 05/15 Distributed computing and API design
+* 05/22 TNG breakdown (design studio class)
+* 05/29 UML 2.0 overview
+* 06/05 Anti-patterns and Topics in Software Architecture
+* 06/13 Design papers due
 * 06/13 Final exam due
 
 ## Grading
