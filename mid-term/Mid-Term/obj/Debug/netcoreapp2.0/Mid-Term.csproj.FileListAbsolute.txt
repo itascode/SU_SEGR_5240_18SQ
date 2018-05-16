@@ -1,0 +1,11 @@
+/Users/mfraser/Projects/Mid-Term/Mid-Term/bin/Debug/netcoreapp2.0/Mid-Term.deps.json
+/Users/mfraser/Projects/Mid-Term/Mid-Term/bin/Debug/netcoreapp2.0/Mid-Term.runtimeconfig.json
+/Users/mfraser/Projects/Mid-Term/Mid-Term/bin/Debug/netcoreapp2.0/Mid-Term.runtimeconfig.dev.json
+/Users/mfraser/Projects/Mid-Term/Mid-Term/bin/Debug/netcoreapp2.0/Mid-Term.dll
+/Users/mfraser/Projects/Mid-Term/Mid-Term/bin/Debug/netcoreapp2.0/Mid-Term.pdb
+/Users/mfraser/Projects/Mid-Term/Mid-Term/obj/Debug/netcoreapp2.0/Mid-Term.csprojResolveAssemblyReference.cache
+/Users/mfraser/Projects/Mid-Term/Mid-Term/obj/Debug/netcoreapp2.0/Mid-Term.csproj.CoreCompileInputs.cache
+/Users/mfraser/Projects/Mid-Term/Mid-Term/obj/Debug/netcoreapp2.0/Mid-Term.AssemblyInfoInputs.cache
+/Users/mfraser/Projects/Mid-Term/Mid-Term/obj/Debug/netcoreapp2.0/Mid-Term.AssemblyInfo.cs
+/Users/mfraser/Projects/Mid-Term/Mid-Term/obj/Debug/netcoreapp2.0/Mid-Term.dll
+/Users/mfraser/Projects/Mid-Term/Mid-Term/obj/Debug/netcoreapp2.0/Mid-Term.pdb
